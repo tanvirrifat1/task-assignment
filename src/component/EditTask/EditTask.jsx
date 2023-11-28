@@ -53,7 +53,7 @@ const EditTask = () => {
           <div className="text-center lg:text-left"></div>
           <div className="card shrink-0 w-full shadow-2xl bg-base-100">
             <form onSubmit={handleEdit} className="card-body">
-              <div className="form-control">
+              {/* <div className="form-control">
                 <label className="label">
                   <span className="label-text">Select Option</span>
                 </label>
@@ -76,7 +76,17 @@ const EditTask = () => {
                     Graphics designer
                   </option>
                 </select>
-              </div>
+              </div> */}
+
+              <input
+                required
+                name="web"
+                type="text"
+                defaultValue={defaultValues.taskNameElement}
+                placeholder="Task Name"
+                className="input input-bordered w-full "
+              />
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Select Option</span>

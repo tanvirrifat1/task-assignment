@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 const AddTask = () => {
   const data = localStorage.getItem("booking");
   const parsedData = JSON.parse(data);
-  console.log(parsedData);
 
   const navigate = useNavigate();
 
@@ -24,10 +23,8 @@ const AddTask = () => {
       pendingData,
     };
     if (parsedData) {
-      // Update the existing array with the new task
       localStorage.setItem("booking", JSON.stringify([...parsedData, booking]));
     } else {
-      // Create a new array with the task and store it in local storage
       localStorage.setItem("booking", JSON.stringify([booking]));
     }
     Swal.fire("task added successfully!");
@@ -37,11 +34,11 @@ const AddTask = () => {
   return (
     <div>
       <div className="hero ">
-        <div className="hero-content w-[700px] flex-col lg:flex-row-reverse">
+        <div className="hero-content lg:w-[700px] flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left"></div>
           <div className="card shrink-0 w-full shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit} className="card-body">
-              <div className="form-control">
+              {/* <div className="form-control">
                 <label className="label">
                   <span className="label-text">Select Option</span>
                 </label>
@@ -59,7 +56,21 @@ const AddTask = () => {
                     Graphics designer
                   </option>
                 </select>
+              </div> */}
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Task Name</span>
+                </label>
+                <input
+                  required
+                  name="web"
+                  type="text"
+                  placeholder="Task Name"
+                  className="input input-bordered w-full "
+                />
               </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Select Option</span>
@@ -78,8 +89,8 @@ const AddTask = () => {
                   <option name="Digital-marketing" value="Medium">
                     Medium
                   </option>
-                  <option name="Graphics-designer" value="Basic">
-                    Basic
+                  <option name="Graphics-designer" value="Low">
+                    Low
                   </option>
                 </select>
               </div>

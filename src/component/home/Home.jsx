@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-
 import { AiFillCheckCircle } from "react-icons/ai";
+import { MdPending } from "react-icons/md";
 
 const Home = () => {
   const data = localStorage.getItem("booking");
@@ -8,18 +8,13 @@ const Home = () => {
 
   const handlePending = (index) => {
     const indexId = parseInt(index, 10);
-
     if (isNaN(indexId) || indexId < 0 || indexId >= parsedData.length) {
       console.error(`Invalid index: ${index}`);
       return;
     }
-
     const updatedTask = { ...parsedData[indexId] };
-
     updatedTask.pendingData = true;
-
     parsedData[indexId] = updatedTask;
-
     localStorage.setItem("booking", JSON.stringify(parsedData));
   };
 
@@ -29,12 +24,13 @@ const Home = () => {
         ...parsedData.slice(0, index),
         ...parsedData.slice(index + 1),
       ];
+
       localStorage.setItem("booking", JSON.stringify(updatedData));
     }
   };
 
   return (
-    <div>
+    <div className="">
       {parsedData.length ? (
         <>
           {parsedData?.map((data, i) => {
@@ -45,7 +41,7 @@ const Home = () => {
               pendingData,
             } = data;
             return (
-              <div key={i} className="flex justify-center items-center mt-10">
+              <div key={i} className="flex justify-center items-center my-10">
                 <div className="card w-96 text-black shadow-lg">
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">Task Name: {taskNameElement}</h2>
@@ -70,7 +66,7 @@ const Home = () => {
                               onClick={() => handlePending(i)}
                               className="btn btn-sm border-black"
                             >
-                              <AiFillCheckCircle />
+                              <MdPending />
                               Mark-as-completed
                             </button>
                           </>
