@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 const AddTask = () => {
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -6,17 +10,16 @@ const AddTask = () => {
     const taskNameElement = form.elements.web.value;
     const labelNameElement = form.elements.label.value;
     const descriptionElement = form.elements.description.value;
-    // const lavelNameElement = form.elements.web1;
-
-    // const taskName = taskNameElement ? taskNameElement.value : "";
 
     const booking = {
       taskNameElement,
       labelNameElement,
       descriptionElement,
     };
-
-    console.log(booking);
+    const bookingJSON = JSON.stringify(booking);
+    localStorage.setItem("booking", bookingJSON);
+    Swal.fire("task added successfully!");
+    navigate("/");
   };
 
   return (
