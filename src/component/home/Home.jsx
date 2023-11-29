@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   return (
-    <div className="">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 m-5 mt-3">
       {parsedData.length ? (
         <>
           {parsedData?.map((data, i) => {
@@ -42,7 +42,7 @@ const Home = () => {
             } = data;
             return (
               <div key={i} className="flex justify-center items-center my-10">
-                <div className="card w-96 text-black shadow-lg">
+                <div className="card lg:w-[700px] text-black shadow-lg">
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">Task Name: {taskNameElement}</h2>
                     <p>Label :{labelNameElement}</p>
